@@ -108,6 +108,9 @@ class MapField extends Field implements EagerLoadingFieldInterface, PreviewableF
 	 */
 	public $boundary = '""';
 
+	/** @var MapElement */
+	private $_value;
+
 	// Methods
 	// =========================================================================
 
@@ -205,8 +208,8 @@ class MapField extends Field implements EagerLoadingFieldInterface, PreviewableF
 				$map->lat     = $value['lat'];
 				$map->lng     = $value['lng'];
 				$map->zoom    = $value['zoom'];
-				$map->address = $value['address'];
-				$map->parts   = $value['parts'];
+				$map->address = $value['address'] ?? '';
+				$map->parts   = $value['parts'] ?? null;
 			}
 		}
 
@@ -384,6 +387,8 @@ class MapField extends Field implements EagerLoadingFieldInterface, PreviewableF
 
 		return parent::beforeSave($isNew);
 	}
+
+	// TODO: Validate the map element BEFORE then element is saved
 
 	/**
 	 * @param ElementInterface $element

@@ -85,8 +85,8 @@ class Parts
 	private function _nominatim (array $parts)
 	{
 		$this->number = $this->_join([
-			$parts['house_number'],
-			$parts['address29'],
+			$parts['house_number'] ?? null,
+			$parts['address29'] ?? null,
 			in_array($parts['type'], [
 				'pedestrian',
 				'footway',
@@ -102,27 +102,27 @@ class Parts
 		]);
 
 		$this->address = $this->_join([
-			$parts['pedestrian'],
-			$parts['footway'],
-			$parts['path'],
-			$parts['road'],
-			$parts['neighbourhood'],
-			$parts['suburb'],
+			$parts['pedestrian'] ?? null,
+			$parts['footway'] ?? null,
+			$parts['path'] ?? null,
+			$parts['road'] ?? null,
+			$parts['neighbourhood'] ?? null,
+			$parts['suburb'] ?? null,
 		]);
 
 		$this->city = $this->_join([
-			$parts['village'],
-			$parts['town'],
-			$parts['city_district'],
-			$parts['city'],
+			$parts['village'] ?? null,
+			$parts['town'] ?? null,
+			$parts['city_district'] ?? null,
+			$parts['city'] ?? null,
 		]);
 
-		$this->postcode = $parts['postcode'];
-		$this->county = $parts['county'];
+		$this->postcode = $parts['postcode'] ?? null;
+		$this->county = $parts['county'] ?? null;
 
 		$this->state = $this->_join([
-			$parts['state_district'],
-			$parts['state'],
+			$parts['state_district'] ?? null,
+			$parts['state'] ?? null,
 		]);
 
 		$this->country = $parts['country'];

@@ -322,7 +322,7 @@ class MapService extends Component
 			$record->parts = new Parts(
 				array_merge(
 					(array) $record->parts,
-					$loc['parts']
+					(array) $loc['parts']
 				)
 			);
 		}
